@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Http\Controllers\Traits\HasCRUDTrait;
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
-    public function index() {
-        // Fetch all authors
-        $authors = Author::all();
+    use HasCRUDTrait;
 
-        return view('authors.list', compact('authors'));
-    }
-
-    public function add() {
-        return view('authors.add');
+    // Change Trait's value
+    public function __construct()
+    {
+        $this->controller = 'authors';
+        $this->allItems   = Author::all();
     }
 
     public function store() {
