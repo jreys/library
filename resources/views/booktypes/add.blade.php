@@ -1,8 +1,14 @@
-<form method="POST" action="/booktypes/store">
-    {{ csrf_field() }}
+@extends('main')
 
-    <h1>Add a new Book Type</h1>
+@section('title', 'Add Book Type')
 
-    <input type="text" name="title" placeholder="Add a new book genre">
-    <button type="submit">Add Book Genre</button>
-</form>
+@section('content')
+    <form method="POST" action="/booktypes/store">
+        {{ csrf_field() }}
+
+        <h1>Add a new Book Type</h1>
+
+        <input type="text" name="title" placeholder="Add a new book genre">
+        <button type="submit">Add Book Genre</button>
+    </form>
+@endsection
