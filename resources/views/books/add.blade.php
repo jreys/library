@@ -1,50 +1,86 @@
-@extends('main')
+@extends('layouts.app')
 
 @section('title', 'Add Book')
 
 @section('content')
-    <form method="POST" action="/books/store">
-        {{ csrf_field() }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card"><div class="card-header">Add a New Book</div>
+                    <div class="card-body">
+                        <form method="POST" action="/books/store">
+                            {{ csrf_field() }}
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-4 col-form-label text-md-right">Title</label>
+                                <div class="col-md-6">
+                                    <input id="title"
+                                           type="text"
+                                           name="title"
+                                           value=""
+                                           required="required"
+                                           class="form-control">
+                                </div>
+                            </div>
 
-        <h1>Add a new Book</h1>
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-4 col-form-label text-md-right">Description</label>
+                                <div class="col-md-6">
+                                    <textarea id="description"
+                                           name="description"
+                                           class="form-control">
+                                    </textarea>
+                                </div>
+                            </div>
 
-        <label for="title">Book's title</label>
-        <input id="title" type="text" name="title">
+                            <div class="form-group row">
+                                <label for="author" class="col-sm-4 col-form-label text-md-right">Author</label>
+                                <div class="col-md-6">
+                                    <select id="author" name="author" class="custom-select">
+                                        @foreach($item->authors() as $author)
+                                            <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
-        <br>
+                            <div class="form-group row">
+                                <label for="book_type" class="col-sm-4 col-form-label text-md-right">Genre</label>
+                                <div class="col-md-6">
+                                    <select id="book_type" name="book_type" class="custom-select">
+                                        @foreach($item->types() as $book_type)
+                                            <option value="{{ $book_type->id }}">{{ $book_type->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
-        <label for="description">Book's description</label>
-        <textarea name="description"></textarea>
+                            <div class="form-group row">
+                                <label for="pages" class="col-sm-4 col-form-label text-md-right">Pages</label>
+                                <div class="col-md-6">
+                                    <input id="pages"
+                                           type="number"
+                                           name="pages"
+                                           value=""
+                                           class="form-control">
+                                </div>
+                            </div>
 
-        <br>
-        <label for="author">Author</label>
-        <select id="author" name="author">
-        @foreach($item->authors() as $author)
-            <option value="{{ $author->id }}">{{ $author->name }}</option>
-        @endforeach
-        </select>
+                            <div class="form-group row">
+                                <label for="quantity" class="col-sm-4 col-form-label text-md-right">Current stock</label>
+                                <div class="col-md-6">
+                                    <input id="quantity"
+                                           type="number"
+                                           name="quantity"
+                                           value=""
+                                           class="form-control">
+                                </div>
+                            </div>
 
-        <br>
-
-        <label for="book_type">Genre</label>
-        <select id="book_type" name="book_type">
-            @foreach($item->types() as $book_type)
-                <option value="{{ $book_type->id }}">{{ $book_type->title }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="pages">Pages</label>
-        <input id="pages" name="pages" type="number" min="0" value="0">
-
-
-
-        <label for="quantity">Current stock</label>
-        <input id="quantity" name="quantity" type="number" min="0" value="0">
-
-        <br>
-
-        <button type="submit">Add Book</button>
-    </form>
+                            <button type="submit" class="btn btn-primary">Add Book</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
