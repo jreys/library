@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Book Genres</h1>
+        <h1>Authors</h1>
         <hr>
         @foreach($list as $author)
             <div class="row justify-content-center">
