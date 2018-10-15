@@ -1,18 +1,32 @@
-@extends('main')
+@extends('layouts.app')
 
 @section('title', 'Books List')
 
 @section('content')
-    <a href="{{ url('/books/add') }}">Add a new Book</a>
-
-    <div id="books">
+    <div class="container">
+        <h1>Books</h1>
+        <hr>
     @foreach($list as $books)
-            <div id="{{ $books->id }}">
-                <p>Title: {{ $books->title }}</p>
-                <p>Description: {{ $books->description }}</p>
-                <p>Pages: {{ $books->pages }}</p>
-                <p>Available stock: {{ $books->quantity }}</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header d-flex">
+                            <p>ID: {{ $books->id }}</p>
+
+                            @include('layouts.delete',
+                                ['id' => $books->id, 'url' => url('/books/delete/' . $books->id)]
+                            )
+                        </div>
+                        <div class="card-body">
+                            <h1>{{ $books->title }}</h1>
+                            <p>{{ $books->description }}</p>
+                            <p>Pages: {{ $books->pages }}</p>
+                            <p>Available stock: {{ $books->quantity }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <hr>
     @endforeach
     </div>
 @endsection

@@ -1,16 +1,29 @@
-@extends('main')
+@extends('layouts.app')
 
 @section('title', 'Authors List')
 
 @section('content')
-    <a href="{{ url('/authors/add') }}">Add a new author</a>
+    <div class="container">
+        <h1>Book Genres</h1>
+        <hr>
+        @foreach($list as $author)
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header d-flex">
+                            <p>ID: {{ $author->id }}</p>
 
-    <div id="authors">
-    @foreach($list as $author)
-            <div id="{{ $author->id }}">
-                <p>ID: {{ $author->id }}</p>
-                <p>Name: {{ $author->name }}</p>
+                            @include('layouts.delete',
+                                ['id' => $author->id, 'url' => url('/authors/delete/' . $author->id)]
+                            )
+                        </div>
+                        <div class="card-body">
+                            {{ $author->name }}
+                        </div>
+                    </div>
+                </div>
             </div>
-    @endforeach
+            <hr>
+        @endforeach
     </div>
 @endsection
