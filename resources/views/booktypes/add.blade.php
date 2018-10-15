@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Add Book Type')
+@section('title', $action . ' Book Type')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card"><div class="card-header">Add Book Genre</div>
+                <div class="card"><div class="card-header">{{ $action }} Book Genre</div>
                     <div class="card-body">
                         <form method="POST" action="/booktypes/store">
                             {{ csrf_field() }}
@@ -16,11 +16,12 @@
                                     <input id="title"
                                            type="text"
                                            name="title"
-                                           value=""
+                                           value="{{ $item->title }}"
                                            required="required"
                                            class="form-control">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add Genre</button>
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <button type="submit" class="btn btn-primary">{{ $action }} Genre</button>
                             </div>
                         </form>
                     </div>
