@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Library\Http\Controllers;
 
-use App\Author;
-use App\Http\Controllers\Traits\HasCRUDTrait;
+use Library\Author;
+use Library\Http\Controllers\Traits\HasCRUDTrait;
 
 class AuthorsController extends Controller
 {
@@ -12,7 +12,7 @@ class AuthorsController extends Controller
     // Construct Trait's value
     public function __construct()
     {
-        $this->controller = 'booktypes';
+        $this->controller = 'authors';
         $this->allItems   = Author::all();
         $this->newItem    = new Author();
         $this->attributes = [
