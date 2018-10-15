@@ -6,7 +6,7 @@
  * Time: 7:20 PM
  */
 
-namespace App\Http\Controllers\Traits;
+namespace Library\Http\Controllers\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -35,6 +35,17 @@ trait HasCRUDTrait
 
     public function add() {
         return view($this->controller . '.add', ['item' => $this->newItem]);
+    }
+
+    public function delete($id) {
+        // Find a record dynamically depending on the class
+        $record = $this->newItem->find($id);
+
+        // Delte the record
+        $record->delete();
+
+        // Return to the list view with the updated data
+        return redirect($this->controller);
     }
 
     public function list() {
