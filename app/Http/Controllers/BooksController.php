@@ -12,6 +12,9 @@ class BooksController extends Controller
     // Change Trait's value
     public function __construct()
     {
+        // Every action needs login except listing books
+        $this->middleware('auth', ['except' => 'list']);
+
         $this->controller = 'books';
         $this->allItems   = Book::all();
         $this->newItem    = new Book();
