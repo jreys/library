@@ -1,8 +1,9 @@
-<button type="button" class="btn btn-danger ml-auto" data-toggle="modal" data-target="#deleteModal">
+
+<button type="button" class="btn btn-danger ml-auto" data-toggle="modal" data-target="#deleteModal-{{ $id }}">
     Delete
 </button>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal-{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
