@@ -14,7 +14,7 @@ class Book extends Model
         return BookType::all();
     }
 
-    public function author($id) {
+    public function getAuthor($id = '') {
         $record = Author::find($id);
 
         if ($record === null) {
