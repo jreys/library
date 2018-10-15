@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', 'BooksController@list');
 
 // Author related routes
 Route::get('/authors', 'AuthorsController@list');
@@ -37,5 +35,3 @@ Route::get('/books/delete/{id}', 'BooksController@delete');
 Route::post('/books/store', 'BooksController@store');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
