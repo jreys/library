@@ -45,6 +45,10 @@ trait HasCRUDTrait
     public function update($id) {
         $this->newItem = $this->newItem->find($id);
 
+        if ($this->newItem === null) {
+            return redirect($this->controller);
+        }
+
         return view($this->controller . '.add',
             [
                 'item' => $this->newItem,
@@ -57,7 +61,11 @@ trait HasCRUDTrait
         // Find a record dynamically depending on the class
         $record = $this->newItem->find($id);
 
-        // Delte the record
+        if ($record === null) {
+            return redirect($this->controller);
+        }
+
+        // Delete the record
         $record->delete();
 
         // Return to the list view with the updated data
