@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 // Author related routes
@@ -29,3 +29,7 @@ Route::post('/booktypes/store', 'BookTypesController@store');
 Route::get('/books', 'BooksController@list');
 Route::get('/books/add', 'BooksController@add');
 Route::post('/books/store', 'BooksController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
