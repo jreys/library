@@ -37,3 +37,9 @@ cd ~/<path>/<to>/<this>/<project>
 php artisan migrate
 php artisan db:seed
 ```
+
+### Run Laravel's dev server and click the link in the output
+
+```shell
+php artisan serve
+```
