@@ -20,6 +20,8 @@
                         <div class="card-body">
                             <h1>{{ $books->title }}</h1>
                             <p>{{ $books->description }}</p>
+                            <p>Genre: {{ $books->type($books->book_type) }}</p>
+                            <p>Author: {{ $books->author($books->author) }}</p>
                             <p>Pages: {{ $books->pages }}</p>
                             <p>Available stock: {{ $books->quantity }}</p>
                         </div>
