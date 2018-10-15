@@ -34,7 +34,23 @@ trait HasCRUDTrait
     protected $attributes = [];
 
     public function add() {
-        return view($this->controller . '.add', ['item' => $this->newItem]);
+        return view($this->controller . '.add',
+            [
+                'item' => $this->newItem,
+                'action' => 'Add'
+            ]
+        );
+    }
+
+    public function update($id) {
+        $this->newItem = $this->newItem->find($id);
+
+        return view($this->controller . '.add',
+            [
+                'item' => $this->newItem,
+                'action' => 'Update'
+            ]
+        );
     }
 
     public function delete($id) {
@@ -53,6 +69,11 @@ trait HasCRUDTrait
     }
 
     public function store() {
+        // Check if in add or edit mode
+        if (\is_numeric(request('id'))) {
+            $this->newItem = $this->newItem->find(request('id'));
+        }
+
         // Get request params for each attribute to save
         foreach ($this->attributes as $attribute) {
             $this->newItem[$attribute] = request($attribute);
