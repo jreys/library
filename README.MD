@@ -30,6 +30,18 @@ git@github.com:jreys/library.git
 
 ## Usage
 
+### Create the DB
+
+Mysql example:
+```mysql
+mysql -u root
+CREATE DATABASE laravel;
+```
+
+### Env file
+
+Rename `.env.example` to `.env` and change the DB + User
+
 ### Migrate the tables and seed
 
 ```shell
