@@ -1,5 +1,5 @@
 
-<button type="button" class="btn btn-danger ml-auto" data-toggle="modal" data-target="#deleteModal-{{ $id }}">
+<button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#deleteModal-{{ $id }}">
     Delete
 </button>
 
