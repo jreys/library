@@ -11,7 +11,9 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header d-flex">
-                            <p>ID: {{ $booktypes->id }}</p>
+                            <p class="mr-auto p-2">ID: {{ $booktypes->id }}</p>
+
+                            <a href="{{ url('/booktypes/update/' . $booktypes->id) }}" class="btn btn-primary m-2">Edit</a>
 
                             @include('layouts.delete',
                                 ['id' => $booktypes->id, 'url' => url('/booktypes/delete/' . $booktypes->id)]
