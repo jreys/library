@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Library\Http\Controllers;
 
-use App\BookType;
-use App\Http\Controllers\Traits\HasCRUDTrait;
+use Library\BookType;
+use Library\Http\Controllers\Traits\HasCRUDTrait;
 
 class BookTypesController extends Controller
 {
